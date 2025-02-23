@@ -1,0 +1,10 @@
+diff a/FingernailProjection/config.json b/FingernailProjection/config.json	(rejected hunks)
+@@ -3,7 +3,7 @@
+     "blurr_size": 6,
+     "use_affine": true,
+     "show_keypoint_images": false,
+-    "binarization_threshold": 20,
++    "binarization_threshold": 12,
+     "opening_kernel_size": 5,
+     "closing_kernel_size": 10,
+     "show_delta_images": true,

@@ -1,0 +1,97 @@
+ZIEL
+Das Ziel dieses Projektes ist die Unterstützung beim Lernen von Sprachen, insbesondere Japanisch, mittels physischer Medien wie Büchern durch Hilfsprojektionen. Ein Kamera Projektor System nimmt scant dabei den Text und die Hand des Anwenders. Sollte der Anwender mit der Hand bspw. Auf den Text zeigen, kann eine Übersetzung oder die Lesung japanischer Kanji angezeigt werden.
+Das Lesen auf elektrischen Medien wie Computer, Tabelts oder Ereadern. Bei diesen können Informationen zum Text mittels Software und durch Nutzerinteraktion einfach eingeblendet werden. Beispielsweise haben Tabletts wie das ****** eine eingebaute Funktion, um Wörterbucheinträge für markierte Worte einzublenden. Auf physischen Medien ist dies natürlich nicht möglich.
+
+WARUM PHYSISCHE MEDIEN WENN ES DIGITALE MÖGLICHKEITEN GIBT?
+Das System ermöglicht die Interaktion mit physischen Texten in ähnlichem Maße wie die Interkation auf elektronischen Geräten mit digitalen Texten. Auch wenn Ereader im Kommen sind, machen Bücher unter den Lesenden immer noch einen Anteil von **** (Quelle einfügen!) aus. Auch haben Bücher und andere physische Medien Vorteile wie Auskommen ohne Stromversorgung, Verleihbarkeit, kein Bildschirmstress, Anfassbarkeit, Geruch, Verbinden mit Erinnerungen und vieles mehr (Quellen einfügen!). Auch können Bücher Vorteile in der Leseleistung und dem Lernen bieten (Quellen einfügen!). 
+Eine andere potentielle Anwendung einer portablen Version des Systems liegt im Lesen von Text im öffentlichen Leben, beispielsweise auf Schildern. Vorteilig im Vergleich zur Nutzung von Apps ist, dass Mitreisende dieselbe Einblendung sehen können, allerdings nachteilig auch andere Passanten, welche die Einblendung als störend empfinden können.
+
+WARUM NICHT GOOGLE TRANSLATE?
+Apps wie Google Translate ermöglichen es, Text in mittels Kamera aufgenommene Bildern zu selektieren, zu kopieren und zu übersetzen. Allerdings sind hierfür einige Handgriffe notwendig: zum Handy, die App öffnen, den gewünschten Text fokussieren und das Foto schießen. Mit einem speziellen System ist nur noch das Auswählen des Textes mittels einer einzigen Handbewegung möglich.
+Weiterhin wird der Originaltext anders als bei Google Translate hier nicht mit der Übersetzung überdeckt, sondern beide Texte können koexistieren, was das Lernen neuer Wörtern besser ermöglicht.
+
+
+HARDWARE-VORARBEIT
+Auf Kamera-Projektor-Systeme zur Augmentation auf ebenen Flächen existieren bereits seit der Arbeit von Wellner 1993, in denen Gesteninputs wie Touches auf projizierte Inhalten wie Buttons bereits erkannt werden konnten. Neuere Setups mit Gestensteuerung umfassen die sich selbst steuernd könnende LuminAR-Schreibtischlampe von Linder et al 2010 oder Setups auf Tischen im öffentlichen Raum zur Steuerung von Karten (Margetis et al 2017). 
+Auch gibt es Setups speziell für das Arbeiten mit Büchern, die eine Stifteingabenutzen, bspw das “Projective Augmented Books” System von Dachselt et al 2011 erlaubt Möglichkeiten zum Arbeiten auf physischen Texten mittels Einblendungen, beispielsweise das Markieren und Annotieren von Texten, bei diesem wird zudem Druck auf bestimmtem Papier benötogt. Gebhardt et al 2014 kommt ohne spezielles Papier aus und erlaubt eine Fülle an Funktionen zur Organisation von Text.
+Thom et al 2012 haben untersucht, wie ein Ereader mit Funktionen wie einem Text-Clipboard erweitert werden kann, sodass man beim Lesen weiterhin das natürliche Gefühl des Lesen eines Buches bewahrt, wobei mit einem Handarmband mit Vibrationsmotor für Feedback gearbeitet wurde. Dabei wurden die Menüs und dessen Auswahlmöglichkeiten mit Handgesten ersetzt, während die Selektio nauf dem Touchscreen bleibt.
+
+
+Linder, Natan, and Pattie Maes. "LuminAR: portable robotic augmented reality interface design and prototype." Adjunct proceedings of the 23rd annual ACM symposium on User interface software and technology . 2010.
+Dachselt, Raimund, and Sarmad Al-Saiegh. "Interacting with printed books using digital pens and smart mobile projection." Proc. of the Workshop on Mobile and Personal Projection (MP2)@ ACM CHI . Vol. 11. 2011.
+Gebhardt, Christoph, Rädle, Roman and Reiterer, Harald. "Employing Blended Interaction to Blend the Qualities of Digital and Physical Books / Anwendung von Blended Interaction zur Vermischung der Eigenschaften digitaler und physischer Bücher" i-com, vol. 13, no. 3, 2014, pp. 36-42. https://doi.org/10.1515/icom.2014.0028
+@inproceedings{10.1145/3125571.3125584, author = {Margetis, George and Ntoa, Stavroula and Antona, Margherita and Stephanidis, Constantine}, title = {Interacting with augmented paper maps: a user experience study}, year = {2017}, isbn = {9781450352376}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA}, url = {https://doi.org/10.1145/3125571.3125584}, doi = {10.1145/3125571.3125584}, abstract = {This paper presents a user experience study of interaction with printed maps for providing digitally augmented tourism information. The Interactive Maps system has been implemented based on an interactive printed matter framework which provides all the necessary components for developing smart applications that offer printed matter interaction, and has been deployed and evaluated in the context of the publicly available Tourism InfoPoint of the Municipality of Heraklion. The results of the evaluation highlight that interacting with digitally augmented paper is quite easy and natural, while the overall user experience is positive.}, booktitle = {Proceedings of the 12th Biannual Conference on Italian SIGCHI Chapter}, articleno = {18}, numpages = {9}, keywords = {Interactive printed matter, ambient intelligence, interactive paper, natural interaction, tabletop interactive system, user experience evaluation}, location = {Cagliari, Italy}, series = {CHItaly '17} }
+@inproceedings{10.1145/2317956.2318032,
+author = {Thom, Emma and Jones, Matt},
+title = {Holding onto the magic: lightweight augmentation of digital reading devices},
+year = {2012},
+isbn = {9781450312103},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2317956.2318032},
+doi = {10.1145/2317956.2318032},
+abstract = {Reading devices such as the Kindle are becoming widely used and many users are now routinely reading on tablet computers. The physical form factor of these devices promotes and accommodates comfortable, natural interactions, providing some of the look and feel of their paper predecessors. However, for operations such as searching and cutting and pasting, the magic and charm of paper is lost and the user has to revert to device-centred selections and menu operations. In this paper, we introduce and explore an alternative set of approaches. In the NoteDrop system we use hand-only gestures along with haptic and limited visual feedback. The aim is to enhance the active reading process with a focus on interactions with digital research documents. In addition to describing the concept prototype, we present the findings of an exploratory user-study that highlights the value and challenges of these new methods.},
+booktitle = {Proceedings of the Designing Interactive Systems Conference},
+pages = {510–513},
+numpages = {4},
+keywords = {active reading, pick up and place, spatial interaction},
+location = {Newcastle Upon Tyne, United Kingdom},
+series = {DIS '12}}
+
+@article{10.1145/159544.159630,
+author = {Wellner, Pierre},
+title = {Interacting with paper on the DigitalDesk},
+year = {1993},
+issue_date = {July 1993},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {36},
+number = {7},
+issn = {0001-0782},
+url = {https://doi.org/10.1145/159544.159630},
+doi = {10.1145/159544.159630},
+journal = {Commun. ACM},
+month = jul,
+pages = {87–96},
+numpages = {10}
+}
+
+
+
+SOFTWARE-VORARBEIT
+Yomitai ist ein webbasiertes Tool, das die Lesung und Bedeutung von Kanjis in hochgeladenen Fotos anzeigen neben dem Bild einblendet und über ein Farbmapping mit den Kanjis im Text verbindet.
+Yomichan ist ein Tool, um direkt in Webseiten über Text zu hovern und Lesung, Definition und weitere Information einzublenden.
+https://yomitai.app/
+https://foosoft.net/projects/yomichan/
+
+NACHTEILE
+Das System erfordert aufgrund der Nutzung einer Projektion eine ausreichend dunkel Umgebung. Eine Erhöhung der Lichtleistung ist möglich auf Kosten höher benötigter elektrischer Leistung und potentieller Gesundheitsgefahr aufgrund des erhöhten Lichtstroms.
+Weiterhin benötigt das System konstant Energie und muss die Bilder stets nach Änderungen und gegebenfalls nach neuen Textinhalten absuchen. Die Optical Character Recognition (OCR) gilt dabei als recht rechenintensiv und sollte deshalb wenn möglich auf einem Minimum gehalten werden durch schlaue Methoden wie Caching (gegenenfalls anpassen, erweitern und Quellen einfügen!).
+
+
+FURIGANA
+Studien haben ergeben, dass Furigana (Lesung in Hiragana über Kanji) Kanji als leichter lesbar wahrgenommen machen (Palmer 2012). Auch kann das Wort schneller nachgeschlagen werden und der Leser ist sich über die Lesung sicher. Ein Use case dieser Applikation kann also die permanente Einblendung von Furigana über Kanji sein oder die Einblendung, sobald der Nutzer dem System den Hinweis gibt, z.B. durch einen Fingerzeig.
+Palmer, Joy. The Effect of Furigana on Lexical Inferencing of Unknown Kanji Words . Brigham Young University, 2012.
+
+ÜBERSETZUNG
+Das System soll insbesondere beim Verständnis von Fremdsprachen helfen, indem es beispielsweise Übersetzungen und Bedeutungen zu einzelnen Wörtern oder Wortbestandteilen (bspw. einzelnen Kanji) liefert. In einfachen Fällen kann eine Übersetzung mittels Symbolen/Icons anstatt Text genutzt werden, da diese sprachenübergreifend verstanden werden und eine erhöhte Lernfähigkeit ermöglichen können (Quelle notwendig!), da der Nutzer aktiv die Verknüpfung zu Wörtern aus bekannten Sprachen machen muss.
+Die Einblendung der Übersetzung soll probeweise neben dem Text als auch auf dem Fingernagel des Nutzers versucht werden. Letzteres hat den Vorteil einer zum Text unobstrusiven und (im Regelfall) stets verfügbaren, einigermaßen ebenen Fläche. Nachteile sind die Krümmung und die nicht idealen Projektionseigenschaften mit einer glatten statt matten Fläche (stimmt das? Quelle einfügen und evtl korrigieren!).
+
+AUFBAU DES SYSTEMS
+1.	Physisches Setup
+2.	Erkennung der Fingertip-Position (und Gesten)
+3.	Erkennung des Textes und dessen Bounding Boxes
+4.	Projektion auf das Medium
+
+Physisches Setup
+
+Ein Projektor und eine Kamera werden mittels Spiegel optisch aligned. Eine Lampe kann zur Aufhellung und Kontrasterhöhung des Textmediums und der Hand dienen.
+
+Erkennung der Fingertip-Position
+Verschiedene Algorithmen wurden evaluiert.
+-	Filterbasiert zur Kontourerkennung der Hand: Mittels Opening wird der dunkle Text vor hellem Hintergrund entfernt. Anschließend wird das Bild gethresholded und dunkle Bereich gelten als Hand.
+-	Bibliotheken zur Erkennung des Fingertips
+o	Mediapipe: Benötigt das Handgelenk um zuverlässig zu funktionieren
+-	
+
+
