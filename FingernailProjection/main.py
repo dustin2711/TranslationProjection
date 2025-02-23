@@ -31,6 +31,8 @@ from monitor_watcher import MonitorWatcher
 from cv2.typing import MatLike
 from color_helper import *
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
+import time
+import threading 
 
 ESCAPE_KEY = 27
 SPACE_KEY = 32
@@ -209,21 +211,50 @@ def reload_translations() -> dict[str, str]:
 
 
 translation_by_word: dict[str, str] = reload_translations()
+translation_by_word_retrieved: dict[str, str] = {}
 
 translations_file_watcher = FileWatcher(translations_dict_path)
 
+def translate_and_store(word: str, translated_word: str, translation_by_word_retrieved: dict, sleep_time: float) -> None:
+    time.sleep(sleep_time)
+    translation_by_word_retrieved[word] = translated_word
 
-def get_translation(word_detection: TextDetection):
+def get_translation(word: str):
     """
     Returns the translation of the given word detection.
     Translates the paragraph of the given word detection if not done yet.
     """
-    global translation_by_word
-    if word := translation_by_word.get(word_detection.text, None):
-        return word
+    global translation_by_word, translation_by_word_retrieved
+
+    word = word.lower()
+
+    # When word appears first time, introduce artificial sleep
+    if word not in translation_by_word_retrieved:
+        translation_by_word_retrieved[word] = "翻訳中…"
+
+        if translated_word := translation_by_word.get(word, None):
+            thread = threading.Thread(target=translate_and_store, args=(word, translated_word, translation_by_word_retrieved, config.sleep_time))
+            thread.start()
+        else:
+            translation_by_word_retrieved[word] = "Translation missing"
+        
+    if translated_word := translation_by_word_retrieved.get(word, None):
+        return translated_word
     else:
-        print(f"Error: {word_detection.text}")
-        return "ERROR"
+        print(f"Error for: {word}")
+        return "ERROR"    
+
+# def get_translation(word_detection: TextDetection):
+#     """
+#     Returns the translation of the given word detection.
+#     Translates the paragraph of the given word detection if not done yet.
+#     """
+#     global translation_by_word
+#     if word := translation_by_word.get(word_detection.text, None):
+#         return word
+#     else:
+#         print(f"Error: {word_detection.text}")
+#         return "ERROR"
 
     # # Translate the whole paragraph
     # paragraph: TextDetection = word_detection.parent
@@ -790,7 +821,7 @@ while True:
 
     # Create the projection drawcall for the hovered word
     if tip_data and selected_word_detection and config.text_projection_enabled:
-        text = get_translation(selected_word_detection)
+        text = get_translation(selected_word_detection.text)
 
         # Project the text on the finger
         if config.projection_target == ProjectionTarget.FINGER:
@@ -813,7 +844,7 @@ while True:
             skin_projection.project_text(
                 annotation_image,
                 text,
-                (landmarks.middle.basejoint + landmarks.wrist) * 0.5,
+                (landmarks.middle.basejoint * (1 - config.hand_text_down) + landmarks.wrist * config.hand_text_down),
                 Tuple2(0, 1),
                 Tuple2(
                     config.hand_vertical_projection_offset_mm,
@@ -914,7 +945,7 @@ while True:
 
     stopwatch.logandrestart("Finished loop")
 
-    stopwatch_total.log("ONE LOOP")
+    # stopwatch_total.log("ONE LOOP")
 
 for provider in image_getter_by_mode.values():
     del provider

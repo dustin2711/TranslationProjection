@@ -42,19 +42,22 @@ def Select(value: T, doc: Optional[str] = None):
 
 
 class Config(ParameterConfig):
+    category_userstudy = True
+    show_debug_windows = Boolean(True)
+    exposure_time = Integer(10000, bounds=(0, 200000), step=100)
 
     category_general = True
     projection_target = Select(ProjectionTarget.FINGER)
     ocr_credits = Integer(3, bounds=(0, 500))
     translation_direction = Select(TranslationDirection.JAPANESE_TO_ENGLISH)
-    show_debug_windows = Boolean(True)
     draw_annotations_on_recording_window = Boolean(True)
     draw_annotations_on_projection_window = Boolean(True)
     draw_words_only_when_paragraph_is_hovered = Boolean(True)
+    sleep_time = Number(0.5, bounds=(0.0, 2.0), step=0.01)
+    hand_text_down = Number(0.5, bounds=(0.0, 1.0), step=0.01)
 
     category_recording = True
     image_retrieving_mode = Select(ImageRetrievingMode.CAMERA)
-    exposure_time = Integer(10000, bounds=(0, 200000), step=100)
     image_rotation = ObjectSelector(default=Rotation.Rot0, objects=list(Rotation))
     brightness_scale_factor = Number(1, bounds=(1, 10))
     use_manual_color_balance = Boolean(False)
@@ -114,7 +117,7 @@ class Config(ParameterConfig):
     paper_eroding_kernel = Integer(2, bounds=(1, 20))
     adaptive_factor = Number(1.0, bounds=(0.05, 2), step=0.05, doc=project_on_paper.doc)
     # FINGER AND HAND PROJECTION
-    skin_projection_color = Color("#FFFFFF", doc=project_on_finger.doc)
+    skin_projection_color = Color("#FFFFFF")
     min_distance_change_for_smoothing_stop = Integer(30, bounds=(0, 200))
     min_up_vector_change_for_smoothing_stop = Number(0.1, bounds=(0, 0.3), step=0.01)
     # FINGER PROJECTION

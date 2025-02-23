@@ -8,10 +8,10 @@ from text_detection import TextDetection
 from cv2.typing import MatLike
 from color_helper import *
 from abc import ABC, abstractmethod
-from stopwatch import Stopwatch
+# from stopwatch import Stopwatch
 from image_display import ImageDisplay
 
-_stopwatch = Stopwatch(logging_enabled=False)
+# _stopwatch = Stopwatch(logging_enabled=False)
 
 
 class HandContourDetector(ABC):
@@ -36,11 +36,11 @@ class HandContourDetector(ABC):
         # Ensure reference image is set
         if self.reference_image is None or not are_tuple_lengths_equal(image, self.reference_image):
             self.reference_image = image.copy()
-            _stopwatch.logandrestart("Set reference image")
+            # _stopwatch.logandrestart("Set reference image")
 
         thresholded_image = self.threshold_image(image)
 
-        _stopwatch.restart(self.config.log_contour_detection)
+        # _stopwatch.restart(self.config.log_contour_detection)
 
         """Finds the hand contour in the thresholded image."""
         cv2_contours, _ = cv2.findContours(
@@ -49,7 +49,7 @@ class HandContourDetector(ABC):
             cv2.CHAIN_APPROX_NONE,
         )
 
-        _stopwatch.logandrestart("findContours")
+        # _stopwatch.logandrestart("findContours")
 
         contours: list[LineString] = [
             convert_contour_to_closed_linestring(it) for it in cv2_contours
@@ -57,13 +57,13 @@ class HandContourDetector(ABC):
 
         if self.config.minimum_contour_length > 0:
             contours = [it for it in contours if it.length > self.config.minimum_contour_length]
-            _stopwatch.logandrestart("filtered too short contours")
+            # _stopwatch.logandrestart("filtered too short contours")
 
         # Filter out points in each line string outside the text
         if self.config.clip_contour_outside_of_text:
 
             box = TextDetection.get_total_axis_bounding_box(detections)
-            _stopwatch.logandrestart("Got total bounding box")
+            # _stopwatch.logandrestart("Got total bounding box")
 
             if box:
                 for index, contour in enumerate(contours):
@@ -83,12 +83,12 @@ class HandContourDetector(ABC):
                             contour,
                             lambda point: left <= point[0] <= right and top <= point[1] <= bot,
                         )
-                        _stopwatch.log(
-                            f"Truncated contour {index} from {previous_point_count} to {len(contour.coords)}"
-                        )
+                        # _stopwatch.log(
+                        #     f"Truncated contour {index} from {previous_point_count} to {len(contour.coords)}"
+                        # )
                 contours = [it for it in contours if it.length > 0]
 
-        _stopwatch.logandrestart("Truncated contours")
+        # _stopwatch.logandrestart("Truncated contours")
 
         match self.config.contour_selection_mode:
             case ContourSelectionMode.LONGEST:
@@ -102,7 +102,7 @@ class HandContourDetector(ABC):
                     default=None,
                 )
 
-        _stopwatch.logandrestart("selected contour")
+        # _stopwatch.logandrestart("selected contour")
 
         if contour is None:
             pass
@@ -114,7 +114,7 @@ class HandContourDetector(ABC):
             draw_linestring(image, contour, GREEN, 2)
             point(image, contour.centroid, GREEN, 5)
 
-        _stopwatch.logandrestart("smooth_linestring and draw")
+        # _stopwatch.logandrestart("smooth_linestring and draw")
 
         if self.config.show_hand_contour:
             self.display.show(
@@ -125,6 +125,6 @@ class HandContourDetector(ABC):
                 ]
             )
 
-        _stopwatch.logandrestart("show_hand_contour")
+        # _stopwatch.logandrestart("show_hand_contour")
 
         return contour
